@@ -5,7 +5,10 @@ const postData = async (path, data) => {
     const response = await fetch(`${BASE_URL}/${path}`, {
       method: "POST",
       body: JSON.stringify(data),
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${token} `,
+      },
     });
     const json = await response.json();
     return json;
