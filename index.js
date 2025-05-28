@@ -9,6 +9,7 @@ const dashboardButton = document.getElementById("dashboard");
 const mainContent = document.getElementById("products");
 const searchButton = document.querySelector("button");
 const inputBox = document.querySelector("input");
+const listItems = document.querySelectorAll("li");
 
 const showProducts = (products) => {
   mainContent.innerHTML = "";
@@ -60,5 +61,25 @@ const searchHandler = () => {
   showProducts(filterProducts);
 };
 
+const filterHandler = (event) => {
+  const category = event.target.innerText.toLowerCase();
+
+  listItems.forEach((li) => {
+    if (li.innerText.toLowerCase() === category) {
+      li.className = "selected";
+    } else {
+      li.className = "";
+    }
+  });
+
+  if (category === "all") return showProducts(allProducts);
+
+  const filteredProducts = allProducts.filter(
+    (product) => product.category.toLowerCase() === category
+  );
+  showProducts(filteredProducts);
+};
+
 document.addEventListener("DOMContentLoaded", init);
 searchButton.addEventListener("click", searchHandler);
+listItems.forEach((li) => li.addEventListener("click", filterHandler));
