@@ -18,16 +18,19 @@
         <a href="auth.html" id="login"
           >login <i class="fa-solid fa-right-to-bracket"></i
         ></a>
-        <a href="dashboard.html" id="dashboard">Dashboard <i class="fa-solid fa-house"></i></a>
+        <a href="dashboard.html" id="dashboard"
+          >Dashboard <i class="fa-solid fa-house"></i
+        ></a>
       </div>
     </header>
     <div id="search">
       <h1>Shop</h1>
-      <input type="text" placeholder="Search Product..." />
-      <button><i class="fa-solid fa-magnifying-glass"></i></button>
+      <div id="search-input">
+        <input type="text" placeholder="Search Product..." />
+        <button><i class="fa-solid fa-magnifying-glass"></i></button>
+      </div>
     </div>
     <div id="container">
-      <div id="products"><span id="loader"></span></div>
       <div id="filter">
         <div>
           <i class="fa-solid fa-sliders"></i>
@@ -41,6 +44,7 @@
           <li>Women's Clothing</li>
         </ul>
       </div>
+      <div id="products"><span id="loader"></span></div>
     </div>
     <script type="module" src="./index.js"></script>
   </body>
