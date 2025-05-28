@@ -2,10 +2,11 @@ import authHandler from "./utils/authorization.js";
 import { getDate } from "./utils/httpReq.js";
 
 const mainContent = document.getElementById("container");
+const logoutButton = document.querySelector("button");
 
 const renderUsers = (users) => {
   mainContent.innerHTML = "";
-  users.forEach((user)=>{
+  users.forEach((user) => {
     const userEl = `
     <div id="card">
       <h3>${user.id}</h3>
@@ -30,9 +31,9 @@ const renderUsers = (users) => {
         <span>${user.address.city} - ${user.address.street} - ${user.address.zipcode} </span>
       </div>
     </div>
-    `
+    `;
     mainContent.innerHTML += userEl;
-  })
+  });
 };
 
 const init = async () => {
@@ -41,4 +42,10 @@ const init = async () => {
   renderUsers(user);
 };
 
+const logoutHandler = () => {
+  document.cookie = "token=; max-age=0";
+  location.assign("index.html")
+};
+
 document.addEventListener("DOMContentLoaded", init);
+logoutButton.addEventListener("click", logoutHandler);
