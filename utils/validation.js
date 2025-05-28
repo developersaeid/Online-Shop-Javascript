@@ -5,7 +5,7 @@ const validateUsername = (username) => {
 };
 
 const validatePassword = (password) => {
-  const regex = /^,{4,20}$/;
+  const regex = /^.{4,20}$/;
   const result = regex.test(password);
   return result;
 };

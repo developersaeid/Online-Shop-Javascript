@@ -7,7 +7,7 @@ const postData = async (path, data) => {
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json",
-        authorization: `Bearer ${token} `,
+        // authorization: `Bearer ${token} `,
       },
     });
     const json = await response.json();
