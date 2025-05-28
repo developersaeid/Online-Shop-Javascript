@@ -14,7 +14,7 @@ const searchButton = document.querySelector("button");
 const inputBox = document.querySelector("input");
 const listItems = document.querySelectorAll("li");
 
-const showProducts = (products) => {
+const renderProducts = (products) => {
   mainContent.innerHTML = "";
 
   products.forEach((product) => {
@@ -52,7 +52,7 @@ const init = async () => {
     dashboardButton.style.display = "none";
   }
   allProducts = await getDate("products");
-  showProducts(allProducts);
+  renderProducts(allProducts);
 };
 
 // Combining search and product categories in global function
@@ -67,7 +67,7 @@ const filterProducts = () => {
       );
     }
   });
-  showProducts(filteredProducts);
+  renderProducts(filteredProducts);
 };
 
 const searchHandler = () => {
