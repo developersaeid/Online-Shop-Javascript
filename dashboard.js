@@ -15,15 +15,15 @@ const renderUsers = (users) => {
       </div>
       <div>
         <p><i class="fa-solid fa-paperclip"></i> Username:</p>
-        <span>${user.name.username}</span>
+        <span>${user.username}</span>
       </div>
       <div>
         <p><i class="fa-solid fa-envelope"></i> Email:</p>
-        <span>${user.name.email}</span>
+        <span>${user.email}</span>
       </div>
       <div>
         <p><i class="fa-solid fa-phone"></i> Phone:</p>
-        <span>${user.name.phone}</span>
+        <span>${user.phone}</span>
       </div>
       <div>
         <p><i class="fa-solid fa-location-dot"></i> Address:</p>
