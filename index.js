@@ -2,14 +2,18 @@ import { getCookie } from "./utils/cookie.js";
 import { getDate } from "./utils/httpReq.js";
 import { shortenText } from "./utils/stringFunc.js";
 
+let allProducts = null;
+
 const loginButton = document.getElementById("login");
 const dashboardButton = document.getElementById("dashboard");
 const mainContent = document.getElementById("products");
+const searchButton = document.querySelector("button");
+const inputBox = document.querySelector("input");
 
 const showProducts = (products) => {
   mainContent.innerHTML = "";
-  
-  products.forEach((product)=>{
+
+  products.forEach((product) => {
     const productEl = `
     <div>
         <img alt=${product.title} src=${product.image} />
@@ -30,9 +34,9 @@ const showProducts = (products) => {
             <span>${product.rating.count} </span>            
         </div>
     </div>
-    `
+    `;
     mainContent.innerHTML += productEl;
-  })
+  });
 };
 
 const init = async () => {
@@ -43,7 +47,18 @@ const init = async () => {
   } else {
     dashboardButton.style.display = "none";
   }
-  const allProducts = await getDate("products");
+  allProducts = await getDate("products");
   showProducts(allProducts);
 };
+
+const searchHandler = () => {
+  const query = inputBox.value.trim().toLowerCase();
+  if (!query) return showProducts(allProducts);
+  const filterProducts = allProducts.filter((product) =>
+    product.title.toLowerCase().includes(query)
+  );
+  showProducts(filterProducts);
+};
+
 document.addEventListener("DOMContentLoaded", init);
+searchButton.addEventListener("click", searchHandler);
